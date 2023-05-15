@@ -8,13 +8,18 @@ import {
 	distinctUntilChanged
 } from 'rxjs';
 import {
+	Button,
+	Col,
+	Dropdown,
 	Input,
+	Row,
 } from 'antd';
 
 
 const MAPBOX_BASE_URL = 'https://api.mapbox.com'
 const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN
 const MAPBOX_UUID4 = process.env.UUID4
+
 const { Search } = Input;
 
 function App() {
@@ -61,7 +66,9 @@ function App() {
 								results.push({
 									name: suggestion.name,
 									mapbox_id: suggestion.mapbox_id,
+									address: suggestion.address,
 									full_address: suggestion.full_address,
+									place_formatted: suggestion.place_formatted,
 								})
 							}
 
@@ -89,13 +96,77 @@ function App() {
 		}
 	}, [subject]);
 
-	const onSearch = () => {
-		subject.next('Kota bharu')
+	const onSearch = (event) => {
+		subject.next(event.target.value)
 	}
 
 	return (
 		<>
-			<Search placeholder="input search text" onSearch={onSearch} enterButton size='middle' />
+
+			<div
+				style={{
+					paddingRight: '80px',
+					fontFamily: 'monospace',
+					zIndex: 1,
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					margin: '12px',
+					borderRadius: '4px',
+					width: '100%',
+					maxWidth: '500px'
+				}}
+			>
+				<Row>
+					<Col flex={4}>
+						<Dropdown
+							open
+							placement="bottomLeft"
+							dropdownRender={()=> (
+								<>
+								{state.suggestionList.map(item =>
+										<Button
+											size="small"
+											type="link"
+											key={item.mapbox_id}
+											onClick={()=>console.log(item.mapbox_id)}
+											style={{
+												lineHeight: 1,
+												color: 'black',
+												textAlign:'left',
+												display:'block',
+												height: 45,
+												width:"100%",
+												borderBottom:1
+											}}
+										>
+											<b>{item.name}</b><br/>
+											<i>{
+												item.place_formatted 
+												? item.place_formatted
+												: item.full_address
+												? item.address
+												: ''
+											}</i>
+										</Button>
+									)}
+								</>
+								
+							)}
+						>
+							<Search placeholder="input search text" onChange={onSearch} enterButton size='middle' />
+						</Dropdown>
+					</Col>
+					<Col flex={1}>
+						<Button type="primary" onClick={()=>console.log(state)}>
+							History
+						</Button>
+
+					</Col>
+				</Row>
+
+			</div>
+
 		</>
 	);
 }
