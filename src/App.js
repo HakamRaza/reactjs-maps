@@ -19,14 +19,16 @@ import {
 	Row,
 } from 'antd';
 
-const MAPBOX_BASE_URL = 'https://api.mapbox.com'
-const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN
-const MAPBOX_UUID4 = process.env.UUID4
 
-mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+
 
 function App() {
+	const MAPBOX_BASE_URL = 'https://api.mapbox.com'
+	const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
+	const MAPBOX_UUID4 = process.env.REACT_APP_MAPBOX_UUID4
 
+	mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+	
 	const mapContainer = useRef(null);
 	const map = useRef(null);
 	const [childrenDrawer, setChildrenDrawer] = useState(false);
@@ -182,7 +184,7 @@ function App() {
 				<div ref={mapContainer}
 					style={{
 						position: 'absolute',
-						// overflow: 'hidden',
+						overflow: 'hidden',
 						height: '100%',
 						width: '100%'
 					}}
