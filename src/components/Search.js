@@ -1,4 +1,4 @@
-import { Button, Col, Dropdown, Input, Row, } from 'antd';
+import { Button, Col, Dropdown, Input, Row } from 'antd';
 
 const Search = ({
     suggestionDetail,
@@ -60,7 +60,7 @@ const Search = ({
 
                     )}
                 >
-                    <Input placeholder="input search text" onChange={onSearch} enterButton size='middle' loading={state.loading} />
+                    <Input placeholder="input search text" onChange={onSearch} size='middle' />
                 </Dropdown>
             </Col>
 

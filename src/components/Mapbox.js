@@ -88,4 +88,5 @@ const Mapbox = ({
     )
 }
 
+
 export default Mapbox
