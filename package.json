@@ -27,6 +27,9 @@
       "react-app/jest"
     ]
   },
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -37,8 +40,8 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "author": "HakamRaza",
-    "license": "MIT"
-  }
+    ]
+  },
+  "author": "HakamRaza",
+  "license": "MIT"
 }
