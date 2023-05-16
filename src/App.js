@@ -105,39 +105,29 @@ function App() {
 	}
 
 	return (
-		<>
-			<head>
-				<title>ReactJS Mapbox</title>
-				<meta name="description" content="Find location on the map" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-				<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
-				<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-			</head>
-			<main>
+		<main>
 
-				<Search
-					suggestionDetail={suggestionDetail}
-					state={state}
-					onSearch={onSearch}
-					setChildrenDrawer={setChildrenDrawer}
-					getDetails={getDetails}
-				/>
+			<Search
+				suggestionDetail={suggestionDetail}
+				state={state}
+				onSearch={onSearch}
+				setChildrenDrawer={setChildrenDrawer}
+				getDetails={getDetails}
+			/>
 
-				<HistoryDrawer
-					childrenDrawer={childrenDrawer}
-					setChildrenDrawer={setChildrenDrawer}
-					setSuggestionDetail={setSuggestionDetail}
-					history={history}
-				/>
+			<HistoryDrawer
+				childrenDrawer={childrenDrawer}
+				setChildrenDrawer={setChildrenDrawer}
+				setSuggestionDetail={setSuggestionDetail}
+				history={history}
+			/>
 
-				<Mapbox
-					MAPBOX_ACCESS_TOKEN={accessToken}
-					suggestionDetail={suggestionDetail}
-				/>
+			<Mapbox
+				MAPBOX_ACCESS_TOKEN={accessToken}
+				suggestionDetail={suggestionDetail}
+			/>
 
-			</main>
-		</>
+		</main>
 	);
 }
 
